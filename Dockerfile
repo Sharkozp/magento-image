@@ -4,7 +4,9 @@ MAINTAINER "Oleksandr Dykyi <dykyi.oleksandr@gmail.com>"
 ARG MAGENTO_PUBLIC_KEY
 ARG MAGENTO_PRIVATE_KEY
 
-RUN apk add git
+RUN apk add --no-cache \
+        git \
+        && docker-php-ext-install bcmath gd soap intl
 
 RUN printf "# composer php cli ini settings\n\
 date.timezone=UTC\n\
