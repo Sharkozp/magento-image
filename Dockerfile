@@ -31,4 +31,5 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"; \
     php composer-setup.php --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION}; \
     php -r "unlink('composer-setup.php');";
 
-RUN composer -q --ansi global config http-basic.repo.magento.com $MAGENTO_PUBLIC_KEY $MAGENTO_PRIVATE_KEY
+RUN composer global require hirak/prestissimo \
+    && composer -q --ansi global config http-basic.repo.magento.com $MAGENTO_PUBLIC_KEY $MAGENTO_PRIVATE_KEY
